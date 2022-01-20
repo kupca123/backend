@@ -26,8 +26,4 @@ public class News extends Record {
 
 
 
-
-    public News(Long id, LocalDateTime timeStampCreateRecord, LocalDateTime timeStampLastChangeOfRecord) {
-        super(id, timeStampCreateRecord, timeStampLastChangeOfRecord);
-    }
 }
