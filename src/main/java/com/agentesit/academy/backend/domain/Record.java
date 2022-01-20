@@ -19,11 +19,6 @@ public class Record {
     protected LocalDateTime timeStampCreateRecord;
     protected LocalDateTime timeStampLastChangeOfRecord;
 
-    public Record(Long id, LocalDateTime timeStampCreateRecord, LocalDateTime timeStampLastChangeOfRecord) {
-        this.id = id;
-        this.timeStampCreateRecord = timeStampCreateRecord;
-        this.timeStampLastChangeOfRecord = timeStampLastChangeOfRecord;
-    }
 
     public Long getId() {
         return id;
