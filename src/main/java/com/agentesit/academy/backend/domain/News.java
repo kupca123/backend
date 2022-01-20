@@ -1,5 +1,7 @@
 package com.agentesit.academy.backend.domain;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -18,6 +20,11 @@ public class News extends Record {
 
     @NotBlank(message = "Content text is mandatory!")
     private String contentText;
+
+    @NotNull
+    private CategoryOfNews category;
+
+
 
 
     public News(Long id, LocalDateTime timeStampCreateRecord, LocalDateTime timeStampLastChangeOfRecord) {
