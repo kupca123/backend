@@ -13,12 +13,16 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public class Record {
 
+    /** ID of records */
     @Id
     @NotNull
     protected Long id;
+    /** Time stamp when was created the record. */
     protected LocalDateTime timeStampCreateRecord;
+    /** Time stamp when was a last change of the record. */
     protected LocalDateTime timeStampLastChangeOfRecord;
 
+    /* Getters and Setters of instance variables */
 
     public Long getId() {
         return id;
