@@ -15,9 +15,9 @@ public class Record {
 
     @Id
     @NotNull
-    private Long id;
-    private LocalDateTime timeStampCreateRecord;
-    private LocalDateTime timeStampLastChangeOfRecord;
+    protected Long id;
+    protected LocalDateTime timeStampCreateRecord;
+    protected LocalDateTime timeStampLastChangeOfRecord;
 
     public Record(Long id, LocalDateTime timeStampCreateRecord, LocalDateTime timeStampLastChangeOfRecord) {
         this.id = id;
