@@ -1,12 +1,9 @@
 package com.agentesit.academy.backend.domain;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Entity
 public class News extends Record {
@@ -21,8 +18,10 @@ public class News extends Record {
     private String contentText;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private CategoryOfNews category;
 
 
-
+    public News() {
+    }
 }
