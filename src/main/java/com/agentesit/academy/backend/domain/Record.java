@@ -26,7 +26,9 @@ public class Record {
     /** Time stamp when was a last change of the record. */
     protected LocalDateTime timeStampLastChangeOfRecord;
 
+
     public Record() {
+        this.timeStampCreateRecord = getCurrentDateTime();
     }
 
     /* Getters and Setters of instance variables */
@@ -53,5 +55,14 @@ public class Record {
 
     public void setTimeStampLastChangeOfRecord(LocalDateTime timeStampLastChangeOfRecord) {
         this.timeStampLastChangeOfRecord = timeStampLastChangeOfRecord;
+    }
+
+    /**
+     * Return current date and time.
+     * @return Return current date and time.
+     */
+    private LocalDateTime getCurrentDateTime(){
+
+        return LocalDateTime.now();
     }
 }
