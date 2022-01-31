@@ -22,6 +22,40 @@ public class News extends Record {
     private CategoryOfNews category;
 
 
+
     public News() {
+    }
+
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getPerex() {
+        return perex;
+    }
+
+    public void setPerex(String perex) {
+        this.perex = perex;
+    }
+
+    public String getContentText() {
+        return contentText;
+    }
+
+    public void setContentText(String contentText) {
+        this.contentText = contentText;
+    }
+
+    public CategoryOfNews getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryOfNews category) {
+        this.category = category;
     }
 }
