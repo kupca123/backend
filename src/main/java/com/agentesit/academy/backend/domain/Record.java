@@ -26,6 +26,9 @@ public class Record {
     /** Time stamp when was a last change of the record. */
     protected LocalDateTime timeStampLastChangeOfRecord;
 
+    public Record() {
+    }
+
     /* Getters and Setters of instance variables */
 
     public Long getId() {
