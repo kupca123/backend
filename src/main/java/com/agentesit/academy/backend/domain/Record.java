@@ -53,8 +53,8 @@ public class Record {
         return timeStampLastChangeOfRecord;
     }
 
-    public void setTimeStampLastChangeOfRecord(LocalDateTime timeStampLastChangeOfRecord) {
-        this.timeStampLastChangeOfRecord = timeStampLastChangeOfRecord;
+    public void setTimeStampLastChangeOfRecord() {
+        this.timeStampLastChangeOfRecord = getCurrentDateTime();
     }
 
     /**
