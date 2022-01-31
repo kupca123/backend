@@ -3,7 +3,10 @@ package com.agentesit.academy.backend.domain;
 import com.sun.istack.NotNull;
 import org.springframework.data.annotation.Id;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.SequenceGenerator;
 import java.time.LocalDateTime;
 
 /**
@@ -15,6 +18,8 @@ public class Record {
 
     /** ID of records */
     @Id
+    @SequenceGenerator(name = "record_seq", sequenceName = "record_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "record_seq")
     protected Long id;
     /** Time stamp when was created the record. */
     protected LocalDateTime timeStampCreateRecord;
