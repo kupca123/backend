@@ -15,7 +15,6 @@ public class Record {
 
     /** ID of records */
     @Id
-    @NotNull
     protected Long id;
     /** Time stamp when was created the record. */
     protected LocalDateTime timeStampCreateRecord;
