@@ -21,6 +21,8 @@ public class News extends Record {
     @Enumerated(EnumType.STRING)
     private CategoryOfNews category;
 
+    //Add foreign key from class "Images"
+
 
 
     public News() {
