@@ -5,29 +5,34 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-@Entity
-public class News extends Record {
+@Entity(name = "news")
+public class NewsEntity extends Record {
 
+    /** Title of news */
     @Column(nullable = false, length = 200)
     private String title;
 
+    /** Perex of news */
     @Column(nullable = false, length = 450)
     private String perex;
 
+    /** Content of news */
     @Column(nullable = false)
     private String contentText;
 
+    /** Category of news */
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private CategoryOfNews category;
 
     //Add foreign key from class "Images"
 
-
-
-    public News() {
+    // Constructor
+    public NewsEntity() {
     }
 
+
+    // Getters and Setters
 
     public String getTitle() {
         return title;
