@@ -1,9 +1,6 @@
 package com.agentesit.academy.backend.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 
 @Entity(name = "news")
 public class NewsEntity extends Record {
@@ -26,6 +23,10 @@ public class NewsEntity extends Record {
     private CategoryOfNews category;
 
     //Add foreign key from class "Images"
+    /** Foreign key (reference) of image */
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "image_id", referencedColumnName = "id")
+    private ImageEntity image;
 
     // Constructor
     public NewsEntity() {
