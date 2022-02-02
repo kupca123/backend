@@ -2,6 +2,7 @@ package com.agentesit.academy.backend.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity(name = "image")
 public class ImageEntity {
@@ -13,6 +14,9 @@ public class ImageEntity {
     /** MIME type of file */
     @Column(nullable  =  false)
     private String mimeType;
+
+    @OneToOne(mappedBy = "image")
+    private NewsEntity news;
 
     // Constructor
     public ImageEntity() {
