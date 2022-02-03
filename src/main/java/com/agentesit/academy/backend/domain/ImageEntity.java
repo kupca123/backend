@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 @Entity(name = "image")
-public class ImageEntity {
+public class ImageEntity extends Record {
 
     /** Relative path to image on the disk */
     @Column(nullable  =  false)
