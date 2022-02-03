@@ -32,6 +32,12 @@ public class NewsEntity extends Record {
     public NewsEntity() {
     }
 
+    public NewsEntity(String title, String perex, String contentText, CategoryOfNews category) {
+        this.title = title;
+        this.perex = perex;
+        this.contentText = contentText;
+        this.category = category;
+    }
 
     // Getters and Setters
 
