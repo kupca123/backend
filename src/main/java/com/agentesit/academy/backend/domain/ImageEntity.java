@@ -15,8 +15,10 @@ public class ImageEntity {
     @Column(nullable  =  false)
     private String mimeType;
 
+    /** Relationship on NewsEntity */
     @OneToOne(mappedBy = "image")
     private NewsEntity news;
+
 
     // Constructor
     public ImageEntity() {
