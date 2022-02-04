@@ -14,7 +14,7 @@ public class ImageService {
     /**
      * Save (INSERT) new image to database.
      * @param image Image to save.
-     * @return The image that was saved.
+     * @return Return the image that was saved.
      */
     public ImageEntity saveImage(ImageEntity image){
         return imageRepository.save(image);
