@@ -3,7 +3,7 @@ package com.agentesit.academy.backend.domain;
 import javax.persistence.*;
 
 @Entity(name = "news")
-@SequenceGenerator(sequenceName = "image_id_seq", name = "record_seq_gen", allocationSize = 1)
+@SequenceGenerator(sequenceName = "news_id_seq", name = "record_seq_gen", allocationSize = 1)
 public class NewsEntity extends Record {
 
     /** Title of news */
