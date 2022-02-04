@@ -3,8 +3,10 @@ package com.agentesit.academy.backend.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
 @Entity(name = "image")
+@SequenceGenerator(sequenceName = "news_id_seq", name = "record_seq_gen", allocationSize = 1)
 public class ImageEntity extends Record {
 
     /** Relative path to image on the disk */
