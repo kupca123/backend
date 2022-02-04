@@ -74,4 +74,12 @@ public class NewsEntity extends Record {
     public void setCategory(CategoryOfNews category) {
         this.category = category;
     }
+
+    public ImageEntity getImage() {
+        return image;
+    }
+
+    public void setImage(ImageEntity image) {
+        this.image = image;
+    }
 }
