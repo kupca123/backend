@@ -24,6 +24,11 @@ public class ImageEntity extends Record {
     public ImageEntity() {
     }
 
+    public ImageEntity(String pathToImage, String mimeType) {
+        this.pathToImage = pathToImage;
+        this.mimeType = mimeType;
+    }
+
     // Getters and Setters
 
     public String getPathToImage() {
