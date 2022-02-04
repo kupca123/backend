@@ -15,7 +15,6 @@ public class Record {
 
     /** ID of records */
     @Id
-//    @SequenceGenerator(name = "record_seq", sequenceName = "record_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "record_seq_gen")
     public Long id;
     /** Time stamp when was created the record. */
