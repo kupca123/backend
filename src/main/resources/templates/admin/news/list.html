@@ -2,8 +2,15 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>List of News</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
 </head>
 <body>
-
-</body>>
+    <table>
+        <tr th:each="news : ${listOfNews} ">
+            <td th:text="${news.id}"></td>
+            <td th:text="${news.title}"></td>
+            <td th:text="${news.category}"></td>
+            <td th:text="${news.timeStampCreateRecord}"></td>
+        </tr>
+    </table>
+</body>

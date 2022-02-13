@@ -23,10 +23,10 @@ public class NewsController {
      * Get all news from database and transmit it to Model.
      * @return ThymeLeaf template "list.html" with transmitted news in Model.
      */
-    @GetMapping
+    @GetMapping()
     public String getAllNews(Model model){
         model.addAttribute("listOfNews", newsService.getAllNews());
-        return "list";
+        return "admin/news/list";
     }
 
 }
