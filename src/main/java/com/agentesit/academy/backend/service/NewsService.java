@@ -5,6 +5,8 @@ import com.agentesit.academy.backend.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /** Class managing data (News) between Controller and Repository. */
 @Service
 public class NewsService {
@@ -20,5 +22,13 @@ private NewsRepository newsRepository;
     public NewsEntity saveNews(NewsEntity news){
     return newsRepository.save(news);
 }
+
+    /**
+     * Get all news from database.
+     * @return Get all news from database.
+     */
+    public List<NewsEntity> getAllNews(){
+        return newsRepository.findAll();
+    }
 
 }
