@@ -6,6 +6,12 @@
 </head>
 <body>
     <table>
+        <tr>
+            <th>ID</th>
+            <th>Název</th>
+            <th>Kategorie</th>
+            <th>Datum vytvoření</th>
+        </tr>
         <tr th:each="news : ${listOfNews} ">
             <td th:text="${news.id}"></td>
             <td th:text="${news.title}"></td>
