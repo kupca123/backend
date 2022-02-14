@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "V rámci prvotního zaškolení a ověření základních dovedností \r nového Java backend vývojáře, vatvoří nový kolega\r malou aplikaci pro editaci novinek.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kupca123/backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kupca123/backend/issues"
+  },
+  "homepage": "https://github.com/kupca123/backend#readme"
+}
