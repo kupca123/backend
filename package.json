@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/kupca123/backend/issues"
   },
-  "homepage": "https://github.com/kupca123/backend#readme"
+  "homepage": "https://github.com/kupca123/backend#readme",
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  }
 }
