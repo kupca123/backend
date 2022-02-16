@@ -8,10 +8,13 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-2">
+        <div class="col-3">
             Sloupec
         </div>
-        <div class="col-8">
+        <div class="col-9">
+            <select name="filtr">
+                <option th:each="category : ${categoryOfNews}" th:value="${category}" th:text="${category}"></option>
+            </select>
             <table class="table table-primary table-striped table-hover">
                 <tr>
                     <th>ID</th>

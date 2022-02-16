@@ -1,6 +1,7 @@
 package com.agentesit.academy.backend.admin.news;
 
 
+import com.agentesit.academy.backend.domain.CategoryOfNews;
 import com.agentesit.academy.backend.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,7 @@ public class NewsController {
     @GetMapping()
     public String getAllNews(Model model){
         model.addAttribute("listOfNews", newsService.getAllNews());
+        model.addAttribute("categoryOfNews", CategoryOfNews.values());
         return "admin/news/list";
     }
 
