@@ -6,18 +6,27 @@
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
-    <table class="table table-primary table-striped table-hover">
-        <tr>
-            <th>ID</th>
-            <th>Název</th>
-            <th>Kategorie</th>
-            <th>Datum vytvoření</th>
-        </tr>
-        <tr th:each="news : ${listOfNews} ">
-            <td th:text="${news.id}"></td>
-            <td th:text="${news.title}"></td>
-            <td th:text="${news.category}"></td>
-            <td th:text="${news.timeStampCreateRecord}"></td>
-        </tr>
-    </table>
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            Sloupec
+        </div>
+        <div class="col-8">
+            <table class="table table-primary table-striped table-hover">
+                <tr>
+                    <th>ID</th>
+                    <th>Název</th>
+                    <th>Kategorie</th>
+                    <th>Datum vytvoření</th>
+                </tr>
+                <tr th:each="news : ${listOfNews} ">
+                    <td th:text="${news.id}"></td>
+                    <td th:text="${news.title}"></td>
+                    <td th:text="${news.category}"></td>
+                    <td th:text="${news.timeStampCreateRecord}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
