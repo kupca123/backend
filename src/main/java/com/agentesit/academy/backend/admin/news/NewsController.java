@@ -38,7 +38,7 @@ public class NewsController {
      * Gets news from the database by filter. If no filter is set, it will return all news
      * @param newsFilter Based on this parameter, news is filtered.
      * @param model Access data for Thymeleaf
-     * @return
+     * @return list.html
      */
     @GetMapping
     public String getFiltredNews(NewsFilter newsFilter, Model model) {
@@ -51,4 +51,12 @@ public class NewsController {
         return "admin/news/list";
     }
 
+    /**
+     * Route to blank create.html form.
+     * @return create.html
+     */
+    @GetMapping("/createNews")
+    public String getCreateForm(){
+        return "admin/news/create";
+    }
 }
