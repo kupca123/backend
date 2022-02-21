@@ -11,7 +11,8 @@ import java.util.List;
 /** Repository interface of news */
 public interface NewsRepository extends JpaRepository<NewsEntity, Long> {
 
-    @Query(value = "slect n from NewsEntity n where " +
-            ":#{#newsFilter.getCategoryOfNews()} is null OR n.category = :#{#newsFilter.getCategoryOfNews()}",nativeQuery = true)
+    @Query(value = "select * from news n where " +
+            ":#{#newsFilter.getCategoryOfNews()} is null OR n.category = :#{#newsFilter.getCategoryOfNews().name()}",nativeQuery = true)
     List<NewsEntity> getFiltredNews(@Param("newsFilter") NewsFilter newsFilter);
+
 }

@@ -1,6 +1,7 @@
 package com.agentesit.academy.backend.service;
 
 import com.agentesit.academy.backend.domain.NewsEntity;
+import com.agentesit.academy.backend.model.NewsFilter;
 import com.agentesit.academy.backend.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,4 +32,15 @@ private NewsRepository newsRepository;
         return newsRepository.findAll();
     }
 
+    /**
+     * Get filtered news.
+     * @param newsFilter Filter for news
+     * @return Get news filtered by category of news from database.
+     */
+    public List<NewsEntity> getFiltredNews(NewsFilter newsFilter) {
+        return newsRepository.getFiltredNews(newsFilter);
+    }
+
 }
+
+
