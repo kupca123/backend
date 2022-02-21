@@ -34,17 +34,20 @@ public class NewsController {
 //        return "admin/news/list";
 //    }
 
+    /**
+     * Gets news from the database by filter. If no filter is set, it will return all news
+     * @param newsFilter Based on this parameter, news is filtered.
+     * @param model Access data for Thymeleaf
+     * @return
+     */
     @GetMapping
     public String getFiltredNews(NewsFilter newsFilter, Model model) {
-
         model.addAttribute("categoryOfNews", CategoryOfNews.values());
-
         if(newsFilter != null) {
             model.addAttribute("listOfNews", newsService.getFiltredNews(newsFilter));
         }else{
             model.addAttribute("listOfNews", newsService.getAllNews());
         }
-
         return "admin/news/list";
     }
 
