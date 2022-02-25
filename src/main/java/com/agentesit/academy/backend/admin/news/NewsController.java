@@ -2,21 +2,21 @@ package com.agentesit.academy.backend.admin.news;
 
 
 import com.agentesit.academy.backend.domain.CategoryOfNews;
+import com.agentesit.academy.backend.domain.ImageEntity;
+import com.agentesit.academy.backend.domain.NewsEntity;
 import com.agentesit.academy.backend.model.NewsFilter;
 import com.agentesit.academy.backend.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controller class for News.
  */
 @Controller
 @RequestMapping("/admin/news")
+@SessionAttributes("newsFilter")
 public class NewsController {
 
     /** Instance of NewsService class */
@@ -41,7 +41,7 @@ public class NewsController {
      * @return list.html
      */
     @GetMapping
-    public String getFiltredNews(NewsFilter newsFilter, Model model) {
+    public String getFiltredNews(@ModelAttribute("newsFilter") NewsFilter newsFilter, Model model) {
         model.addAttribute("categoryOfNews", CategoryOfNews.values());
         if(newsFilter != null) {
             model.addAttribute("listOfNews", newsService.getFiltredNews(newsFilter));
@@ -55,8 +55,32 @@ public class NewsController {
      * Route to blank create.html form.
      * @return create.html
      */
+//    @GetMapping("/createNews")
+//    public String getCreateForm(){
+//        return "admin/news/create";
+//    }
+
     @GetMapping("/createNews")
-    public String getCreateForm(){
+    public String getCreateForm(@SessionAttribute("newsFilter") NewsFilter newsFilter, Model model){
+        model.addAttribute("filter", newsFilter);
+
+        model.addAttribute("news", new NewsEntity());
+        model.addAttribute("image", new ImageEntity());
+        model.addAttribute("categoryOfNews", CategoryOfNews.values());
         return "admin/news/create";
+    }
+
+    @PostMapping("/createNews")
+    public String postCreateNews(@ModelAttribute NewsEntity news, @ModelAttribute ImageEntity image) {
+        news.setImage(image);
+        newsService.saveNews(news);
+//        return "admin/news/list";
+        return "redirect:/admin/news";
+    }
+
+
+    @ModelAttribute("newsFilter")
+    public NewsFilter getNewsFilter(){
+        return new NewsFilter();
     }
 }
