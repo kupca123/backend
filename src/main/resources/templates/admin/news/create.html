@@ -6,5 +6,23 @@
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
-New News
+<p th:text="${filter}"></p>
+<form th:action="@{/admin/news/createNews}" th:method="post">
+    <button type="submit">Vytořit</button>
+    <label for="nameInput">Název*</label>
+    <input type="text" id="nameInput" th:field="*{news.title}">
+    <label for="categoryInput">Kategorie*</label>
+    <select id="categoryInput" th:field="*{news.category}">
+        <option th:each="category : ${categoryOfNews}" th:value="${category}" th:text="${category}"></option>
+    </select>
+
+    <input th:value="cestaKObrazku" th:field="*{image.pathToImage}">
+    <input th:value="MIME" th:field="*{image.mimeType}">
+
+    <label for="perexTextarea">Perex*</label>
+    <textarea id="perexTextarea" th:field="*{news.perex}"></textarea>
+    <label for="textOfNewsTextarea">Text novinky*</label>
+    <textarea id="textOfNewsTextarea" th:field="*{news.contentText}"></textarea>
+
+</form>
 </body>
