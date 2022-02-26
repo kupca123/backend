@@ -7,7 +7,7 @@
 </head>
 <body>
 <p th:text="${filter}"></p>
-<form th:action="@{/admin/news/createNews}" th:method="post">
+<form th:action="@{/admin/news/createNews}" th:method="post" enctype="multipart/form-data">
     <button type="submit">Vytořit</button>
     <label for="nameInput">Název*</label>
     <input type="text" id="nameInput" th:field="*{news.title}">
@@ -16,6 +16,7 @@
         <option th:each="category : ${categoryOfNews}" th:value="${category}" th:text="${category}"></option>
     </select>
 
+    <input type="file" name="imageInput" accept="image/*">
     <input th:value="cestaKObrazku" th:field="*{image.pathToImage}">
     <input th:value="MIME" th:field="*{image.mimeType}">
 
@@ -23,6 +24,7 @@
     <textarea id="perexTextarea" th:field="*{news.perex}"></textarea>
     <label for="textOfNewsTextarea">Text novinky*</label>
     <textarea id="textOfNewsTextarea" th:field="*{news.contentText}"></textarea>
+    <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
 
 </form>
 </body>
