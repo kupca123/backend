@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Optional;
 
 /** Class managing data (News) between Controller and Repository. */
 @Service
@@ -29,19 +30,7 @@ private NewsLogics newsLogics = new NewsLogics();
         return newsRepository.save(news);
     }
 
-//    public NewsEntity saveNews(NewsEntity news, MultipartFile file){
-//        final String UPLOAD_DIR = "./src/main/resources/uploadsImages/";
-//        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-//
-//        // save the file on the local file system
-//        try {
-//            Path path = Paths.get(UPLOAD_DIR + fileName);
-//            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    return newsRepository.save(news);
-//}
+
 public NewsEntity saveNews(NewsEntity news, MultipartFile file){
     final String UPLOAD_DIR = "./src/main/resources/uploadsImages/";
 
@@ -69,6 +58,11 @@ public NewsEntity saveNews(NewsEntity news, MultipartFile file){
     public List<NewsEntity> getFiltredNews(NewsFilter newsFilter) {
         return newsRepository.getFiltredNews(newsFilter);
     }
+
+    public Optional<NewsEntity> getNewsById(Long id){
+        return newsRepository.findById(id);
+    }
+
 
 }
 
