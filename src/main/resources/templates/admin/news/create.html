@@ -13,7 +13,7 @@
     <input type="text" id="nameInput" th:field="*{news.title}">
     <label for="categoryInput">Kategorie*</label>
     <select id="categoryInput" th:field="*{news.category}">
-        <option th:each="category : ${categoryOfNews}" th:value="${category}" th:text="${category}"></option>
+        <option th:each="category : ${categoryOfNews}" th:value="${category}" th:text="${category}" th:selected="${news.category}"></option>
     </select>
 
     <input type="file" id="imageInput" name="imageInput" accept="image/*">
