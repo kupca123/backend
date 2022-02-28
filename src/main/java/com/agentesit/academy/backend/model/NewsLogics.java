@@ -11,14 +11,16 @@ import java.nio.file.StandardCopyOption;
 
 public class NewsLogics {
 
-    public Path saveFile(String uploadDir, MultipartFile file){
-        final String UPLOAD_DIR = uploadDir;
+
+
+    public Path saveFile(String rootDir, String uploadDir, MultipartFile file){
+//        final String UPLOAD_DIR = "./src/main/resources/static" + uploadDir;
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         Path path = null;
 
         // save the file on the local file system
         try {
-            path = Paths.get(UPLOAD_DIR + fileName);
+            path = Paths.get(rootDir + uploadDir + fileName);
             Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
         } catch (
                 IOException e) {

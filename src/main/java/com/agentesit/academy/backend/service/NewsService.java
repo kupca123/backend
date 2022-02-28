@@ -8,7 +8,10 @@ import com.agentesit.academy.backend.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,23 +24,30 @@ private NewsRepository newsRepository;
 
 private NewsLogics newsLogics = new NewsLogics();
 
+private String rootDir = "./src/main/resources/static";
+    
+    
     /**
      * Save (INSERT) new news to database.
      * @param news News to save
      * @return Return the news that was saved.
      */
     public NewsEntity saveNews(NewsEntity news) {
+
+        Path pathToImage = Paths.get(rootDir + news.getImage().getPathToImage());
+        news.getImage().setMimeType(newsLogics.checkMIMEtype(pathToImage));
         return newsRepository.save(news);
     }
 
 
 public NewsEntity saveNews(NewsEntity news, MultipartFile file){
-    final String UPLOAD_DIR = "./src/main/resources/uploadsImages/";
+    String uploadDir = "/uploadsImages/";
 
-    Path path = newsLogics.saveFile(UPLOAD_DIR, file);
+    Path path = newsLogics.saveFile(rootDir, uploadDir, file);
+
 
     news.setImage(new ImageEntity());
-    news.getImage().setPathToImage(path.toString());
+    news.getImage().setPathToImage(uploadDir + path.getFileName().toString());
     news.getImage().setMimeType(newsLogics.checkMIMEtype(path));
     return newsRepository.save(news);
 }

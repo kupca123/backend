@@ -20,4 +20,5 @@ public interface NewsRepository extends JpaRepository<NewsEntity, Long> {
 
     Optional<NewsEntity> findById(Long id);
 
+
 }

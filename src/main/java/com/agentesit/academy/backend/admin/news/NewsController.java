@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+
 
 /**
  * Controller class for News.
@@ -50,6 +52,11 @@ public class NewsController {
     @GetMapping("/createNews")
     public String getCreateForm(@SessionAttribute("newsFilter") NewsFilter newsFilter, Model model){
         model.addAttribute("filter", newsFilter);
+        model.addAttribute("typeOfView", "/admin/news/createNews");
+
+//        // pak smazat!!!!!
+//        System.out.println("URL adresa: " + request.getRequestURI());
+//        ////// ----------
 
         model.addAttribute("news", new NewsEntity());
         model.addAttribute("image", new ImageEntity());
@@ -60,9 +67,9 @@ public class NewsController {
 
 @PostMapping("/createNews")
     public String postCreateNews(@ModelAttribute NewsEntity news, @RequestParam("imageInput") MultipartFile file, RedirectAttributes attributes) {
-//        final String UPLOAD_DIR = "./src/main/resources/uploadsImages/";
 
         // check if file is empty
+    System.out.println("Cesta: " + news.getImage());
         if (file.isEmpty()) {
             attributes.addFlashAttribute("message", "Please select a file to upload.");
             return "redirect:/admin/news/createNews";
@@ -76,6 +83,7 @@ public class NewsController {
 
     @GetMapping("/editNews/{id}")
     public String getEditNews(@PathVariable Long id, Model model){
+        model.addAttribute("typeOfView", "/admin/news/editNews");
 
         model.addAttribute("news", newsService.getNewsById(id).get());
         model.addAttribute("categoryOfNews", CategoryOfNews.values());
@@ -83,6 +91,11 @@ public class NewsController {
         return "admin/news/create";
     }
 
+    @PostMapping("/editNews")
+    public String postEditNews(@ModelAttribute NewsEntity news){
+        newsService.saveNews(news);
+        return "redirect:/admin/news";
+    }
 
     @ModelAttribute("newsFilter")
     public NewsFilter getNewsFilter(){
