@@ -58,23 +58,6 @@ public class NewsController {
     }
 
 
-
-// @PostMapping("/createNews")
-//    public String postCreateNews(@ModelAttribute NewsEntity news, @ModelAttribute ImageEntity image, @RequestParam("imageInput") MultipartFile file, RedirectAttributes attributes) {
-////        final String UPLOAD_DIR = "./src/main/resources/uploadsImages/";
-//
-//        // check if file is empty
-//        if (file.isEmpty()) {
-//            attributes.addFlashAttribute("message", "Please select a file to upload.");
-//            return "redirect:/admin/news/createNews";
-//        }
-//
-//
-//        news.setImage(image);
-//        newsService.saveNews(news, file);
-//        return "redirect:/admin/news";
-//    }
-
 @PostMapping("/createNews")
     public String postCreateNews(@ModelAttribute NewsEntity news, @RequestParam("imageInput") MultipartFile file, RedirectAttributes attributes) {
 //        final String UPLOAD_DIR = "./src/main/resources/uploadsImages/";
@@ -89,6 +72,15 @@ public class NewsController {
 //        news.setImage(image);
         newsService.saveNews(news, file);
         return "redirect:/admin/news";
+    }
+
+    @GetMapping("/editNews/{id}")
+    public String getEditNews(@PathVariable Long id, Model model){
+
+        model.addAttribute("news", newsService.getNewsById(id).get());
+        model.addAttribute("categoryOfNews", CategoryOfNews.values());
+
+        return "admin/news/create";
     }
 
 
