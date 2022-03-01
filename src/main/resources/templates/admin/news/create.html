@@ -6,37 +6,61 @@
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
-<p th:text="${filter}"></p>
-
-<!--<form  th:action="@{/admin/news/createNews}" th:method="post" enctype="multipart/form-data">-->
+<div class="container-fluid h-100">
+    <div class="row">
+        <div id="menuDiv" class="col-2 bg-primary">
+            <div class="bg-light p-4">
+                <a class="link-primary" th:href="@{/admin/news/}">Novinky</a>
+            </div>
+        </div>
+        <div class="col-10">
 <form  th:action="${typeOfView}" th:method="post" enctype="multipart/form-data">
     <input type="hidden" th:field="*{news.id}">
-    <button type="submit" th:if="${typeOfView == '/admin/news/createNews'}">Vytořit</button>
-    <button id="editButton" type="button" onclick="setEditableForm()" th:if="${typeOfView == '/admin/news/editNews'}">Editovat</button>
-    <button id="saveButton" type="submit" style="display: none;">Uložit</button>
+
+    <div class="bg-primary d-flex flex-row-reverse p-2">
+    <button type="submit" th:if="${typeOfView == '/admin/news/createNews'}" class="btn btn-outline-light">Vytořit</button>
+        <button id="editButton" type="button" onclick="setEditableForm()" th:if="${typeOfView == '/admin/news/editNews'}">Editovat</button>
+        <button id="saveButton" type="submit" style="display: none;">Uložit</button>
+    </div>
+    <div class="container border border-primary rounded-3 p-5">
+        <div class="row">
+            <div class="col-6 d-flex flex-column">
+
     <label for="nameInput">Název*</label>
-    <input type="text" id="nameInput" th:field="*{news.title}" th:readonly="${typeOfView == '/admin/news/editNews'}">
+    <input class="form-control w-75" type="text" id="nameInput" th:field="*{news.title}" th:readonly="${typeOfView == '/admin/news/editNews'}">
     <label for="categoryInput">Kategorie*</label>
-    <select id="categoryInput" th:field="*{news.category}" th:disabled="${typeOfView == '/admin/news/editNews'}">
+    <select class="form-select w-75" id="categoryInput" th:field="*{news.category}" th:disabled="${typeOfView == '/admin/news/editNews'}">
         <option th:each="category : ${categoryOfNews}" th:value="${category}" th:text="${category}" th:selected="${news.category}"></option>
     </select>
-
+            </div>
+            <div class="col-6">
     <input type="hidden" th:field="*{news.image}">
-    <input id="imageInput" type="file" name="imageInput" accept="image/*" th:disabled="${typeOfView == '/admin/news/editNews'}">
+    <input class="form-control-file" id="imageInput" type="file" name="imageInput" accept="image/*" th:disabled="${typeOfView == '/admin/news/editNews'}">
     <div style="display:none;">
 <!--    <div>-->
-        <img id="newsImg" th:src="${news.image?.pathToImage}" th:field="*{news.image?.pathToImage}" width="300" height="227" alt="">
+        <img id="newsImg" th:src="${news.image?.pathToImage}" th:field="*{news.image?.pathToImage}" width="300" height="200">
     </div>
-    <canvas id="imageCanvas" width="250" height="300"
+    <canvas id="imageCanvas" width="300" height="200"
             style="border:1px solid #d3d3d3;"> </canvas>
-
+            </div>
+    </div>
+    </div>
+    <div class="container border border-primary rounded-3 p-5">
+        <div class="row">
+            <div class="col-6">
     <label for="perexTextarea">Perex*</label>
-    <textarea id="perexTextarea" th:field="*{news.perex}" th:readonly="${typeOfView == '/admin/news/editNews'}"></textarea>
-    <label for="textOfNewsTextarea">Text novinky*</label>
-    <textarea id="textOfNewsTextarea" th:field="*{news.contentText}" th:readonly="${typeOfView == '/admin/news/editNews'}"></textarea>
+    <textarea class="form-control w-75 rounded-3" id="perexTextarea" th:field="*{news.perex}" th:readonly="${typeOfView == '/admin/news/editNews'}"></textarea>
+            </div>
+            <div class="col-6">
+                <label for="textOfNewsTextarea">Text novinky*</label>
+    <textarea class="form-control w-75 rounded-3" id="textOfNewsTextarea" th:field="*{news.contentText}" th:readonly="${typeOfView == '/admin/news/editNews'}"></textarea>
     <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
+            </div>
+            </div>
+    </div>
 </form>
-
-
+        </div>
+    </div>
+    </div>
 <script type="text/javascript" th:src="@{/js/createUpdate.js}"></script>
 </body>

@@ -6,20 +6,28 @@
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
-<div class="container">
+<div class="container-fluid h-100">
     <div class="row">
-        <div class="col-3">
-            Sloupec
+        <div id="menuDiv" class="col-2 bg-primary">
+            <div class="bg-light p-4">
+            <a class="link-primary" th:href="@{/admin/news/}">Novinky</a>
+            </div>
         </div>
-        <div class="col-9">
+        <div class="col-10">
+            <div class="bg-primary d-flex flex-row-reverse p-2">
+                <a th:href="@{/admin/news/createNews}" class="btn btn-outline-light" role="button">Nová</a>
+            </div>
+            <div class="border border-primary rounded-3 p-5">
             <form th:action="@{/admin/news}" th:object="${newsFilter}" method="get">
-            <select name="filtr" th:field="*{categoryOfNews}">
+            <label for="filterSelect">Kategorie</label>
+            <select id="filterSelect" name="filtr" th:field="*{categoryOfNews}" class="form-select w-25">
                 <option value="">vše</option>
                 <option th:each="category : ${categoryOfNews}" th:value="${category}" th:text="${category}"></option>
             </select>
-                <button type="submit">OK</button>
+                <button type="submit" class="btn btn-primary">Filtrovat</button>
             </form>
-            <a th:href="@{/admin/news/createNews}" class="btn btn-success">New</a>
+            </div>
+
             <table class="table table-primary table-striped table-hover" id="newsTable">
                 <tr>
                     <th>ID</th>

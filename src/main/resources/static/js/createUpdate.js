@@ -40,16 +40,19 @@
 
 
      const newsImg = document.getElementById("newsImg");
-     newsImg.onload = function(e) {
+//     newsImg.onload = function(e) {
+     window.onload = function(e) {
      loadImage(newsImg);
     }
 
     function loadImage(image){
     var myCanvas = document.getElementById("imageCanvas"); // Creates a canvas object
+                var imgWidth = 300;
+                var imgHeight = 300 * image.height / image.width;
                 var myContext = myCanvas.getContext("2d"); // Creates a contect object
-//                myCanvas.width = image.width; // Assigns image's width to canvas
-//                myCanvas.height = image.height; // Assigns image's height to canvas
-                myContext.drawImage(image,0,0,200, 200 * image.height / image.width); // Draws the image on canvas
+                myCanvas.width = imgWidth; // Assigns image's width to canvas
+                myCanvas.height = imgHeight; // Assigns image's height to canvas
+                myContext.drawImage(image,0,0,imgWidth, imgHeight); // Draws the image on canvas
                 let imgData = myCanvas.toDataURL("image/jpeg",0.75); // Assigns image base64 string in jpeg format to a variable
 
     }
